@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", sans-serif;
+  --color-primary: #050816;
+  --color-secondary: #aaa6c3;
+  --color-tertiary: #151030;
+  --color-black-100: #100d25;
+  --color-black-200: #090325;
+  --color-white-100: #f3f3f3;
+  --shadow-card: 0px 35px 120px -15px #211e35;
+  --breakpoint-xs: 450px;
+}
+
+@utility bg-hero-pattern {
+  background-image: url('./assets/herobg.png'); /* put herobg.png in /public */
+}
+@utility violet-gradient {
+  background: linear-gradient(-180deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+}
+@utility green-pink-gradient {
+  background: linear-gradient(90deg, #00cea8 0%, #bf61ff 100%);
+}
+@utility black-gradient {
+  background: linear-gradient(90deg, #434343 0%, #000 100%);
+}
+
+body { @apply bg-primary text-white; }
+html { scroll-behavior: smooth; }
