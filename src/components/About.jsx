@@ -6,6 +6,13 @@ import {styles} from '../styles';
 import {services} from '../constants';
 import {fadeIn, textVariant} from '../utils/motion';
 
+const ServiceCard = ({index, title, icon}) => {
+  return (
+    <p> {services.title} </p>
+  )
+}
+
+
 const About = () => {
   return (
     <>
@@ -23,7 +30,12 @@ const About = () => {
         experience in javascript, tailwind.css and other utilities.
         My hobbies are playing video game and photography.
       </motion.p>
+      <div className = "mt-20 flex flex-wrap gap-10">
+        {services.map((service,index) => (
+          <ServiceCard key={service.title} index = {index} {...service}/> 
 
+        ))}
+      </div>
     </>
   )
 }
