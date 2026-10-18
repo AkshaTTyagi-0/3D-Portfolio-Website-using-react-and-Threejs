@@ -20,9 +20,29 @@ const Contact = () => {
 
   const [loading,setLoading] = useState(false);
   
-  const handleChange = (e) => {}
+  const handleChange = (e) => {
+    const {name,value} = e.target;
+    setForm({ ...form, [name]:value})
+  }
 
-  const handleSubmit = (e) => {}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs.send(
+      // 'service id',
+      // 'templateid',
+      {
+        from_name:form.name,
+        to_name: 'Akshat',
+        from_email: form.email,
+        to_email:'akshat.tyagi.school@gmail.com',
+        message: form.message,
+      },
+      // 'another id'
+    )
+
+  }
   return (
     <div className = "xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
       <motion.div
