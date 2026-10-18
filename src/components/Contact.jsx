@@ -25,24 +25,36 @@ const Contact = () => {
     setForm({ ...form, [name]:value})
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
+const handleSubmit = (e) => {
+  e.preventDefault();
+  setLoading(true);
 
-    emailjs.send(
-      // 'service id',
-      // 'templateid',
+  emailjs
+    .send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
       {
-        from_name:form.name,
-        to_name: 'Akshat',
+        from_name: form.name,
+        to_name: "Akshat",
         from_email: form.email,
-        to_email:'akshat.tyagi.school@gmail.com',
+        to_email: "akshat.tyagi.school@gmail.com",
         message: form.message,
       },
-      // 'another id'
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     )
-
-  }
+    .then(
+      () => {
+        setLoading(false);
+        alert("Thank you. I will get back to you as soon as possible.");
+        setForm({ name: "", email: "", message: "" });
+      },
+      (error) => {
+        setLoading(false);
+        console.log(error);
+        alert("Something went wrong!");
+      }
+    );
+};
   return (
     <div className = "xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
       <motion.div
